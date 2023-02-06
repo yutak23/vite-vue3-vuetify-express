@@ -6,6 +6,7 @@ module.exports = {
 	extends: [
 		'plugin:vue/vue3-essential',
 		'eslint:recommended',
+		'airbnb-base',
 		'@vue/eslint-config-prettier'
 	],
 	parserOptions: {

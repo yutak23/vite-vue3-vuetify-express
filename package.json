@@ -8,7 +8,16 @@
 		"preview": "vite preview",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
 		"style": "prettier --ignore-unknown --write .",
-		"ncu": "npm-check-updates"
+		"ncu": "npm-check-updates",
+		"prepare": "npx simple-git-hooks"
+	},
+	"lint-staged": {
+		"*": "npx prettier --ignore-unknown --write",
+		"yarn.lock": "npx license-checker --production --failOn \"GPL;AGPL;LGPL;NGPL\" --summary"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "npx lint-staged --verbose",
+		"commit-msg": "npx commitlint -e"
 	},
 	"dependencies": {
 		"pinia": "^2.0.30",
@@ -23,8 +32,11 @@
 		"eslint-config-airbnb-base": "15.0.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-vue": "^9.9.0",
+		"license-checker": "^25.0.1",
+		"lint-staged": "^13.1.1",
 		"npm-check-updates": "^16.6.5",
 		"prettier": "^2.8.3",
+		"simple-git-hooks": "^2.8.1",
 		"vite": "^4.1.1"
 	}
 }

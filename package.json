@@ -7,22 +7,24 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-		"style": "prettier --ignore-unknown --write ."
+		"style": "prettier --ignore-unknown --write .",
+		"ncu": "npm-check-updates"
 	},
 	"dependencies": {
-		"pinia": "^2.0.28",
-		"vue": "^3.2.45",
+		"pinia": "^2.0.30",
+		"vue": "^3.2.47",
 		"vue-router": "^4.1.6"
 	},
 	"devDependencies": {
-		"@rushstack/eslint-patch": "^1.1.4",
+		"@rushstack/eslint-patch": "^1.2.0",
 		"@vitejs/plugin-vue": "^4.0.0",
 		"@vue/eslint-config-prettier": "^7.0.0",
-		"eslint": "^8.2.0",
+		"eslint": "^8.33.0",
 		"eslint-config-airbnb-base": "15.0.0",
-		"eslint-plugin-import": "^2.25.2",
-		"eslint-plugin-vue": "^9.3.0",
-		"prettier": "^2.7.1",
-		"vite": "^4.0.0"
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-vue": "^9.9.0",
+		"npm-check-updates": "^16.6.5",
+		"prettier": "^2.8.3",
+		"vite": "^4.1.1"
 	}
 }

@@ -12,6 +12,14 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 'latest'
 	},
+	settings: {
+		'import/resolver': {
+			alias: {
+				map: [['@', './src']]
+			},
+			extensions: ['.js', '.vue']
+		}
+	},
 	rules: {
 		'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
 	}

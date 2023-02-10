@@ -7,7 +7,7 @@
 
 			<v-img src="@/assets/logo.svg"></v-img>
 
-			<v-app-bar-title class="photos">Photos</v-app-bar-title>
+			<v-app-bar-title class="photos">{{ $t('app.title') }}</v-app-bar-title>
 
 			<template v-slot:append>
 				<v-btn icon="mdi-dots-vertical"></v-btn>

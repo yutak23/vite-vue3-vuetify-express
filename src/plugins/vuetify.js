@@ -7,6 +7,10 @@ import * as components from 'vuetify/components';
 // eslint-disable-next-line import/no-unresolved
 import * as directives from 'vuetify/directives';
 import colors from 'vuetify/lib/util/colors';
+// eslint-disable-next-line import/no-unresolved
+import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n';
+import { useI18n } from 'vue-i18n';
+import i18n from '@/plugins/i18n';
 
 const vuetify = createVuetify({
 	components,
@@ -20,6 +24,9 @@ const vuetify = createVuetify({
 				}
 			}
 		}
+	},
+	locale: {
+		adapter: createVueI18nAdapter({ i18n, useI18n })
 	}
 });
 

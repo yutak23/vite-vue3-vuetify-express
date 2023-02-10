@@ -14,13 +14,15 @@ module.exports = {
 	},
 	settings: {
 		'import/resolver': {
-			alias: {
-				map: [['@', './src']]
-			},
-			extensions: ['.js', '.vue']
+			'eslint-import-resolver-custom-alias': {
+				alias: {
+					'@': './src'
+				},
+				extensions: ['.js', '.vue']
+			}
 		}
 	},
 	rules: {
-		'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+		'import/no-extraneous-dependencies': ['error', { packageDir: './' }]
 	}
 };

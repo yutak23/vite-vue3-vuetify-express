@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +14,8 @@ export default defineConfig({
 		vuetify({
 			autoImport: true,
 			styles: { configFile: 'src/styles/settings.scss' }
-		})
+		}),
+		eslint()
 	],
 	resolve: {
 		alias: {

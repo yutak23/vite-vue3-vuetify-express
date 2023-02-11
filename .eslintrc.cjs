@@ -5,6 +5,7 @@ module.exports = {
 	root: true,
 	extends: [
 		'plugin:vue/vue3-essential',
+		'plugin:vuetify/recommended',
 		'eslint:recommended',
 		'airbnb-base',
 		'@vue/eslint-config-prettier'

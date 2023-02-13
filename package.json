@@ -23,6 +23,7 @@
 		"commit-msg": "npx commitlint -e"
 	},
 	"dependencies": {
+		"@prisma/client": "4.10.1",
 		"express": "^4.18.2",
 		"pinia": "^2.0.30",
 		"snakecase-keys": "^5.4.5",
@@ -48,6 +49,7 @@
 		"nodemon": "^2.0.20",
 		"npm-check-updates": "^16.6.5",
 		"prettier": "^2.8.3",
+		"prisma": "^4.10.1",
 		"sass": "^1.58.0",
 		"simple-git-hooks": "^2.8.1",
 		"vite": "^4.1.1",

@@ -9,5 +9,5 @@ CREATE TABLE `users` (
 
     UNIQUE INDEX `idx_email`(`email`),
     PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 

@@ -7,19 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  published Boolean @default(true)
-  authorId  Int
-  User      User    @relation(fields: [authorId], references: [id])
-
-  @@index([authorId], map: "Post_authorId_fkey")
-}
-
-model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  jobTitle String // ← 追加
-  Post     Post[]
+model users {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  email      String   @unique(map: "idx_email") @db.VarChar(128)
+  password   String   @db.Char(60)
+  name       String?  @db.VarChar(128)
+  created_at DateTime @default(now()) @db.DateTime(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
 }

@@ -1,22 +1,13 @@
 -- CreateTable
-CREATE TABLE `Post` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(191) NOT NULL,
-    `published` BOOLEAN NOT NULL DEFAULT true,
-    `authorId` INTEGER NOT NULL,
+CREATE TABLE `users` (
+    `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(128) NOT NULL,
+    `password` CHAR(60) NOT NULL,
+    `name` VARCHAR(128) NULL,
+    `created_at` DATETIME(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+    `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
-    INDEX `Post_authorId_fkey`(`authorId` ASC),
-    PRIMARY KEY (`id` ASC)
+    UNIQUE INDEX `idx_email`(`email`),
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `User` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(191) NOT NULL,
-
-    PRIMARY KEY (`id` ASC)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `Post` ADD CONSTRAINT `Post_authorId_fkey` FOREIGN KEY (`authorId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 

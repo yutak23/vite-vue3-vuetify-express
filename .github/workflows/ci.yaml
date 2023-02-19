@@ -2,7 +2,9 @@ name: ci
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - prisma-express
   workflow_dispatch:
 
 jobs:

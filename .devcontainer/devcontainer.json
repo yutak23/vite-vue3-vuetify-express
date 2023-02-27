@@ -1,7 +1,7 @@
 {
 	"name": "Node.js",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
-	"appPort": ["3000:3000"],
+	"appPort": ["8080:8080", "3000:3000"],
 	"postCreateCommand": "yarn install",
 	"customizations": {
 		"vscode": { "extensions": ["esbenp.prettier-vscode", "Vue.volar"] }

@@ -6,7 +6,7 @@
 			{{ $t('app.title') }}
 		</v-app-bar-title>
 
-		<v-menu location="bottom start">
+		<v-menu location="bottom">
 			<template v-slot:activator="{ props }">
 				<v-btn variant="text" icon="mdi-earth" v-bind="props" />
 			</template>
@@ -23,11 +23,19 @@
 			</v-list>
 		</v-menu>
 
-		<v-btn
-			@click.stop="drawer = true"
-			variant="text"
-			icon="mdi-dots-vertical"
-		/>
+		<v-menu location="bottom">
+			<template v-slot:activator="{ props }">
+				<v-btn variant="text" icon="mdi-dots-vertical" v-bind="props" />
+			</template>
+
+			<v-list>
+				<v-list-item @click="logout" prepend-icon="mdi-logout-variant">
+					<v-list-item-title>
+						{{ $t('navigation.header.dots_vertical.logout') }}
+					</v-list-item-title>
+				</v-list-item>
+			</v-list>
+		</v-menu>
 	</v-app-bar>
 
 	<v-navigation-drawer v-model="drawer" color="white">
@@ -90,6 +98,10 @@ export default {
 		changeLocale(locale) {
 			this.$i18n.locale = locale;
 			this.$vuetify.locale.current = locale;
+		},
+		logout() {
+			// TODO: logoutの実装
+			console.log('logout');
 		}
 	}
 };

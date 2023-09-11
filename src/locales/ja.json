@@ -7,6 +7,9 @@
 			"contact": {
 				"text": "コンタクト",
 				"tooltip": "コンタクト画面のメニューです"
+			},
+			"dots_vertical": {
+				"logout": "ログアウト"
 			}
 		}
 	}

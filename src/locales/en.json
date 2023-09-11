@@ -13,6 +13,9 @@
 			"contact": {
 				"text": "Contact",
 				"tooltip": "This is the menu for the contact screen."
+			},
+			"dots_vertical": {
+				"logout": "Logout"
 			}
 		}
 	}

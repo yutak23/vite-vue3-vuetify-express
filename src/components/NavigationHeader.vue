@@ -52,7 +52,7 @@
 					<v-icon :icon="menu.icon" />
 				</template>
 
-				<v-tooltip :text="$t(menu.tooltip)" location="bottom">
+				<v-tooltip :text="$t(menu.tooltip)" location="bottom" open-delay="500">
 					<template v-slot:activator="{ props }">
 						<v-list-item-title v-bind="props">
 							{{ $t(menu.text) }}

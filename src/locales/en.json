@@ -1,1 +1,19 @@
-{ "app": { "title": "Vuetify" } }
+{
+	"app": { "title": "Vuetify" },
+	"navigation": {
+		"header": {
+			"home": {
+				"text": "Home",
+				"tooltip": "This is the menu for the home screen."
+			},
+			"about": {
+				"text": "About",
+				"tooltip": "This is the menu for the about screen."
+			},
+			"contact": {
+				"text": "Contact",
+				"tooltip": "This is the menu for the contact screen."
+			}
+		}
+	}
+}

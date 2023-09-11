@@ -6,9 +6,28 @@
 			{{ $t('app.title') }}
 		</v-app-bar-title>
 
-		<v-btn @click.stop="drawer = true" variant="text" icon>
-			<v-icon> mdi-dots-vertical </v-icon>
-		</v-btn>
+		<v-menu location="bottom start">
+			<template v-slot:activator="{ props }">
+				<v-btn variant="text" icon="mdi-earth" v-bind="props" />
+			</template>
+
+			<v-list>
+				<v-list-item
+					v-for="(language, i) in languages"
+					:key="i"
+					:value="language.locale"
+					@click="changeLocale(language.locale)"
+				>
+					<v-list-item-title>{{ language.text }}</v-list-item-title>
+				</v-list-item>
+			</v-list>
+		</v-menu>
+
+		<v-btn
+			@click.stop="drawer = true"
+			variant="text"
+			icon="mdi-dots-vertical"
+		/>
 	</v-app-bar>
 
 	<v-navigation-drawer v-model="drawer" color="white">
@@ -42,6 +61,10 @@ export default {
 	name: 'NavigationHeader',
 	data: () => ({
 		drawer: false,
+		languages: [
+			{ locale: 'ja', text: '日本語' },
+			{ locale: 'en', text: 'English' }
+		],
 		menus: [
 			{
 				text: 'navigation.header.home.text',
@@ -62,7 +85,13 @@ export default {
 				to: '/contact'
 			}
 		]
-	})
+	}),
+	methods: {
+		changeLocale(locale) {
+			this.$i18n.locale = locale;
+			this.$vuetify.locale.current = locale;
+		}
+	}
 };
 </script>
 

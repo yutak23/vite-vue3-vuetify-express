@@ -1,18 +1,18 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
 import express from 'express';
-import snakecaseKeys from 'snakecase-keys';
+import chalk from 'chalk';
+import consoleExpressRoutes from 'console-express-routes';
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
-
-console.log(dirname);
-console.log(snakecaseKeys({ fooBar: 'baz' }));
+const PORT = 3000;
 
 const app = express();
 
-app.get('/hello', (req, res) => {
-	res.json({ msg: 'hello' });
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(3000);
+app.listen(PORT, () => {
+	console.log();
+	console.log('  ♻️  Server running at:');
+	console.log(`    - Local:   ${chalk.cyan('http://localhost:3000')}`);
+	console.log();
+	consoleExpressRoutes(app);
+});

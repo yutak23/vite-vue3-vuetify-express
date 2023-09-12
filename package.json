@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"express": "nodemon srv/index.js",
+		"express": "nodemon --watch srv/ srv/index.js",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
 		"style": "prettier --ignore-unknown --write .",
 		"ncu": "npm-check-updates",
@@ -23,6 +23,8 @@
 		"commit-msg": "npx commitlint -e"
 	},
 	"dependencies": {
+		"chalk": "^5.3.0",
+		"console-express-routes": "^1.0.2",
 		"express": "^4.18.2",
 		"snakecase-keys": "^5.4.6",
 		"vue": "^3.3.4",

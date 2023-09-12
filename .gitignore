@@ -31,3 +31,5 @@ coverage
 
 # Docker 
 data
+
+.env

@@ -1,6 +1,11 @@
+import 'dotenv/config';
 import express from 'express';
 import compression from 'compression';
 import helmet from 'helmet';
+import expressSession from 'express-session';
+import RedisStore from 'connect-redis';
+import Redis from 'ioredis';
+import config from 'config';
 import cacheResponseDirective from 'express-cache-response-directive';
 import history from 'connect-history-api-fallback';
 import chalk from 'chalk';
@@ -26,6 +31,17 @@ app.use(
 		}
 	})
 );
+
+const redis = new Redis(config.get('redis.session'));
+const store = new RedisStore({ client: redis });
+app.use(
+	expressSession({
+		...config.get('session'),
+		secret: process.env.COOKIE_SECRET,
+		store
+	})
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cacheResponseDirective());

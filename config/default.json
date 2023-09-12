@@ -1,0 +1,19 @@
+{
+	"redis": {
+		"session": {
+			"port": 6379,
+			"host": "localhost",
+			"db": 1
+		}
+	},
+	"session": {
+		"name": "express.sid",
+		"resave": false,
+		"saveUninitialized": true,
+		"cookie": {
+			"httpOnly": true,
+			"secure": false,
+			"maxAge": 604800000
+		}
+	}
+}

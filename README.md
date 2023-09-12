@@ -49,3 +49,14 @@ yarn lint
 Nginxでproxyする理由
 
 - helmetの設定の関係上、HTTPSである必要がある
+
+### config
+
+#### config/default.json
+
+- session.cookie.maxAge: 7 days(7day × 24h × 60m × 60s × 1000ms)
+
+#### .env
+
+- COOKIE_SECRET  
+  クッキーのシークレット

@@ -1,5 +1,6 @@
 import express from 'express';
 import compression from 'compression';
+import helmet from 'helmet';
 import history from 'connect-history-api-fallback';
 import chalk from 'chalk';
 import consoleExpressRoutes from 'console-express-routes';
@@ -11,8 +12,19 @@ const prod = process.env.NODE_ENV === 'production';
 
 const app = express();
 
+if (prod) app.set('trust proxy', 1);
 app.use(compression({ level: 1, memLevel: 3 }));
 app.use(errorResponse());
+app.use(
+	helmet({
+		contentSecurityPolicy: {
+			directives: {
+				// for Vue : EvalError: Refused to evaluate a string as JavaScript because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: "script-src 'self'".
+				'script-src': ["'self'", "'unsafe-eval'"]
+			}
+		}
+	})
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

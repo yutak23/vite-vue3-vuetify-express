@@ -33,3 +33,19 @@ yarn build
 ```sh
 yarn lint
 ```
+
+## How to develop
+
+### vite devserver and proxy to express
+
+### production mode express
+
+本番モードのサーバーをローカルで立ち上げる手順は以下。
+
+1. `yarn build`
+2. `docker compose up -d`
+3. `yarn express:run`
+
+Nginxでproxyする理由
+
+- helmetの設定の関係上、HTTPSである必要がある

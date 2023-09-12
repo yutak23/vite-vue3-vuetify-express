@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import chalk from 'chalk';
 import consoleExpressRoutes from 'console-express-routes';
 
@@ -8,6 +9,7 @@ const PORT = 3000;
 
 const app = express();
 
+app.use(compression({ level: 1, memLevel: 3 }));
 app.use(errorResponse());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

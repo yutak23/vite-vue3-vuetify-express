@@ -1,6 +1,7 @@
 import express from 'express';
 import compression from 'compression';
 import helmet from 'helmet';
+import cacheResponseDirective from 'express-cache-response-directive';
 import history from 'connect-history-api-fallback';
 import chalk from 'chalk';
 import consoleExpressRoutes from 'console-express-routes';
@@ -27,6 +28,11 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cacheResponseDirective());
+app.use((req, res, next) => {
+	res.cacheControl('no-store');
+	next();
+});
 
 if (prod) {
 	app.use(history());

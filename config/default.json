@@ -1,4 +1,11 @@
 {
+	"oauth": {
+		"google": {
+			"issure": "https://accounts.google.com",
+			"redirect_uri": "https://example.com:8080/oauth2/callback",
+			"scopes": ["openid", "email", "profile"]
+		}
+	},
 	"redis": {
 		"session": {
 			"port": 6379,

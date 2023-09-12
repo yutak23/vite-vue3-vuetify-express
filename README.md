@@ -60,3 +60,7 @@ Nginxでproxyする理由
 
 - COOKIE_SECRET  
   クッキーのシークレット
+- CLIENT_ID_GOOGLE  
+  GoogleのクライアントID
+- CLIENT_SECRET_GOOGLE  
+  Googleのクライアントシークレット

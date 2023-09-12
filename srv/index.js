@@ -13,6 +13,7 @@ import consoleExpressRoutes from 'console-express-routes';
 
 import errorResponse from './lib/error-response.js';
 import HttpError from './lib/http-error.js';
+import CustomOpenidClient from './lib/custom-openid-client.js';
 
 const PORT = 3000;
 const prod = process.env.NODE_ENV === 'production';
@@ -53,6 +54,13 @@ app.use((req, res, next) => {
 
 const { locals } = app;
 locals.errors = { HttpError };
+locals.oauthClients = {
+	google: await CustomOpenidClient.init({
+		...config.get('oauth.google'),
+		client_id: process.env.CLIENT_ID_GOOGLE,
+		client_secret: process.env.CLIENT_SECRET_GOOGLE
+	})
+};
 
 if (prod) {
 	app.use(history());

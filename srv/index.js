@@ -12,6 +12,7 @@ import chalk from 'chalk';
 import consoleExpressRoutes from 'console-express-routes';
 
 import errorResponse from './lib/error-response.js';
+import HttpError from './lib/http-error.js';
 
 const PORT = 3000;
 const prod = process.env.NODE_ENV === 'production';
@@ -49,6 +50,9 @@ app.use((req, res, next) => {
 	res.cacheControl('no-store');
 	next();
 });
+
+const { locals } = app;
+locals.errors = { HttpError };
 
 if (prod) {
 	app.use(history());

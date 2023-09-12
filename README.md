@@ -54,6 +54,10 @@ Nginxでproxyする理由
 
 #### config/default.json
 
+- oauth.google.access_type  
+  refresh_tokenの取得には必要  
+  https://developers.google.com/identity/protocols/oauth2/web-server?hl=ja#obtainingaccesstokens  
+  https://github.com/googleapis/google-api-python-client/issues/213
 - session.cookie.maxAge: 7 days(7day × 24h × 60m × 60s × 1000ms)
 
 #### .env

@@ -14,13 +14,14 @@ import consoleExpressRoutes from 'console-express-routes';
 import errorResponse from './lib/error-response.js';
 import HttpError from './lib/http-error.js';
 import CustomOpenidClient from './lib/custom-openid-client.js';
+import createRoutes from './routes/index.js';
 
 const PORT = 3000;
 const prod = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-if (prod) app.set('trust proxy', 1);
+app.set('trust proxy', 1); // Google OAuth2.0ではHTTPSが必須なので、リバースプロキシを経由している場合は、この設定が必要
 app.use(compression({ level: 1, memLevel: 3 }));
 app.use(errorResponse());
 app.use(
@@ -61,6 +62,11 @@ locals.oauthClients = {
 		client_secret: process.env.CLIENT_SECRET_GOOGLE
 	})
 };
+
+const routes = await createRoutes();
+Object.keys(routes).forEach((route) => {
+	routes[route]({ app });
+});
 
 if (prod) {
 	app.use(history());

@@ -2,8 +2,9 @@
 	"oauth": {
 		"google": {
 			"issure": "https://accounts.google.com",
-			"redirect_uri": "https://example.com:8080/oauth2/callback",
-			"scopes": ["openid", "email", "profile"]
+			"redirect_uri": "https://vitevue3.com/oauth2/callback",
+			"scopes": ["openid", "email", "profile", "https://www.googleapis.com/auth/calendar.readonly"],
+			"access_type": "offline"
 		}
 	},
 	"redis": {

@@ -11,13 +11,14 @@ export default class CustomOpenidClient {
 		this.issure = options.issure;
 		this.client = options.client;
 		this.scopes = options.scopes;
+		this.accessType = options.accessType || null;
 	}
 
 	static async init(options = {}) {
 		assert.ok(Array.isArray(options.scopes), 'options.scopes must be array.');
 
 		const camelcasedOptions = camelcaseKeys(options, { deep: true });
-		const needProps = ['issure', 'clientId', 'clientSecret', 'redirectUri', 'scopes'];
+		const needProps = ['issure', 'clientId', 'clientSecret', 'redirectUri', 'scopes', 'accessType'];
 		needProps.forEach((key) => {
 			assert.ok(camelcasedOptions[key], `camelcasedOptions must contain key:${key}`);
 		});
@@ -32,7 +33,8 @@ export default class CustomOpenidClient {
 		return new CustomOpenidClient({
 			issure,
 			client,
-			scopes: camelcasedOptions.scopes.join(' ')
+			scopes: camelcasedOptions.scopes.join(' '),
+			accessType: camelcasedOptions.accessType
 		});
 	}
 
@@ -41,13 +43,16 @@ export default class CustomOpenidClient {
 		const codeVerifier = generators.codeVerifier();
 		const codeChallenge = generators.codeChallenge(codeVerifier);
 
-		const authUrl = this.client.authorizationUrl({
+		const params = {
 			scope: this.scopes,
 			state,
 			code_challenge: codeChallenge,
 			code_challenge_method: 'S256',
-			prompt: 'select_account'
-		});
+			prompt: 'consent' // https://github.com/googleapis/google-api-python-client/issues/213
+		};
+		if (this.accessType) params.access_type = this.accessType;
+
+		const authUrl = this.client.authorizationUrl(params);
 		return { authUrl, state, codeVerifier };
 	}
 
@@ -64,6 +69,6 @@ export default class CustomOpenidClient {
 			state,
 			code_verifier: codeVerifier
 		});
-		return camelcaseKeys(tokenSet.claims());
+		return camelcaseKeys({ ...tokenSet, claims: tokenSet.claims() });
 	}
 }

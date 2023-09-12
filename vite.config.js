@@ -22,5 +22,11 @@ export default defineConfig({
 			'@': fileURLToPath(new URL('./src', import.meta.url))
 		}
 	},
-	server: { host: '0.0.0.0', port: 8080 }
+	server: {
+		host: '0.0.0.0',
+		port: 8080,
+		proxy: {
+			'^/(api|oauth2)/': { target: 'http://localhost:3000', changeOrigin: false }
+		}
+	}
 });

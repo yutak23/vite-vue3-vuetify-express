@@ -7,9 +7,7 @@
 			<v-card-text> {{ doubleCount }}</v-card-text>
 			<v-card-actions>
 				<v-spacer />
-				<v-btn color="primary" variant="text" @click="increment">
-					increment
-				</v-btn>
+				<v-btn color="primary" variant="text" @click="increment"> increment </v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-container>

@@ -9,7 +9,7 @@
 		"preview": "vite preview",
 		"express": "nodemon --watch srv/ srv/index.js",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-		"style": "prettier --ignore-unknown --write .",
+		"style:fix": "prettier --ignore-unknown --write .",
 		"ncu": "npm-check-updates",
 		"prepare": "npx simple-git-hooks"
 	},
